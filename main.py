@@ -27,6 +27,7 @@ def populate_make(value):
         if current_make is not None:
             return current_make, current_year
         reset()
+    return current_make, current_year
 
 
 vin_kv = raw_rdd.map(lambda x: extract_vin_key_value(x))
