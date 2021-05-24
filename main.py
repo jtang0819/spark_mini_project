@@ -13,20 +13,24 @@ def extract_vin_key_value(line):
     return key, value
 
 
-def reset():
-    master_make = ''
-    master_year = ''
+def reset(x, y):
+    master_make = x
+    master_year = y
 
 
 def populate_make(value):
     value = list(value)
     master_make = ''
+    master_year = ''
     current_make = value[0]
     current_year = value[1]
-    if current_make != master_make:
+    if current_make != master_make and current_year != master_year:
+        #if line read is not equal to the master_make then-
         if current_make is not None:
             return current_make, current_year
-        reset()
+            # this will return current make and year if it is a new group
+        reset(current_make, current_year)
+        # since it is a new group master_make and master_year will be set to current_make and master_year
     return current_make, current_year
 
 
